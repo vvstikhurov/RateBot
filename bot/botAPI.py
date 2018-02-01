@@ -1,5 +1,6 @@
 import requests
 from bot import config
+from bot import models
 url = "https://api.telegram.org/bot" + config.token + "/"
 
 
@@ -23,3 +24,10 @@ def send_mess(chat, text):
     params = {'chat_id': chat, 'text': text}
     response = requests.post(url + 'sendMessage', params)
     return response
+
+def isInHandleMessage(message_id):
+    try:
+        message = models.Message.objects.get(id=message_id)
+        return True
+    except:
+        return False

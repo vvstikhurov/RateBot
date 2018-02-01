@@ -1,14 +1,14 @@
 import bot
 import stokAPI.yobitAPI
 from time import sleep
+import bot.botAPI as botAPI
 
-
-def checkForUpdate():
+def checkForUpd4ate():
     for val in bot.get_updates_json(bot.url)['result']:
         pair = val['message']['text']
         chat_id = val['message']['chat']['id']
         message_id = val['message']['message_id']
-        if isInHandleMessage(chat_id, message_id):
+        if botAPI.isInHandleMessage(message_id):
             continue
         else:
             if (val['message']['text'] == "/start"):
